@@ -32,6 +32,7 @@ const POST = (req, res, next) => {
       user_additional_number,
       post_description,
       post_text,
+      isActive,
     } = req.body;
     const { post_image } = req.files;
 
@@ -58,6 +59,7 @@ const POST = (req, res, next) => {
       post_description,
       post_image: filePath,
       post_text,
+      isActive: false,
     };
 
     post_image.mv(resolve("uploads", post_image.name));
