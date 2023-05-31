@@ -1,44 +1,94 @@
 [
-  {
-    "post_id": 1,
-    "post_description": "Alisher Isaevdan biznes va IT bo’yicha master klass",
-    "post_image": "1685525019901a1bd2293-d6ed-4a94-ba93-b882a5f3dfc6.png",
-    "post_text": "Najot Ta'lim jamoasi o'z o'quvchilari uchun manfaatli bo'lgan musobaqalarni tashkil etishda davom etadi. Biz bu gal markazimizdagi uch soha vakillari, ya'ni UX/UI dizayner, frontend va backend dasturchilarni \"bir dasturxon atrofida\" to'plashga qaror qildik.\n",
-    "time_and_direction": {
-      "date": "2022-05-05",
-      "time": "20:05",
-      "course": "Information Technologies",
-      "specialist": "Java developer",
-      "type": "Online",
-      "link": "https://www.youtube.com/liver24"
+    {
+        "post_id": 1,
+        "post_description": "Alisher Isaevdan biznes va IT bo’yicha master klass",
+        "post_image": "1685525019901a1bd2293-d6ed-4a94-ba93-b882a5f3dfc6.png",
+        "post_text": "Najot Ta'lim jamoasi o'z o'quvchilari uchun manfaatli bo'lgan musobaqalarni tashkil etishda davom etadi. Biz bu gal markazimizdagi uch soha vakillari, ya'ni UX/UI dizayner, frontend va backend dasturchilarni \"bir dasturxon atrofida\" to'plashga qaror qildik.\n",
+        "time_and_direction": {
+            "date": "2022-05-05",
+            "time": "20:05",
+            "course": "Information Technologies",
+            "specialist": "Java developer",
+            "type": "Online",
+            "link": "https://www.youtube.com/liver24"
+        },
+        "advertiser": {
+            "user_full_name": "Abbos Janizakov",
+            "user_proffesion": "Product designer",
+            "user_phone": "998997777777",
+            "user_additional_number": "998917777777"
+        },
+        "isActive": false
     },
-    "advertiser": {
-      "user_full_name": "Abbos Janizakov",
-      "user_proffesion": "Product designer",
-      "user_phone": "998997777777",
-      "user_additional_number": "998917777777"
+    {
+        "post_id": 2,
+        "post_description": "Alisher Isaevdan biznes va IT bo’yicha master klass",
+        "post_image": "1685525019901a1bd2293-d6ed-4a94-ba93-b882a5f3dfc6.png",
+        "post_text": "Najot Ta'lim jamoasi o'z o'quvchilari uchun manfaatli bo'lgan musobaqalarni tashkil etishda davom etadi. Biz bu gal markazimizdagi uch soha vakillari, ya'ni UX/UI dizayner, frontend va backend dasturchilarni \"bir dasturxon atrofida\" to'plashga qaror qildik.\n",
+        "time_and_direction": {
+            "date": "2022-05-05",
+            "time": "20:05",
+            "course": "Information Technologies",
+            "specialist": "Java developer",
+            "type": "Online",
+            "link": "https://www.youtube.com/liver24"
+        },
+        "advertiser": {
+            "user_full_name": "Abbos Janizakov",
+            "user_proffesion": "Product designer",
+            "user_phone": "+998997777777",
+            "user_additional_number": "998917777777"
+        },
+        "isActive": true
     },
-    "isActive": false
-  },
-  {
-    "post_id": 2,
-    "post_description": "Alisher Isaevdan biznes va IT bo’yicha master klass",
-    "post_image": "1685525019901a1bd2293-d6ed-4a94-ba93-b882a5f3dfc6.png",
-    "post_text": "Najot Ta'lim jamoasi o'z o'quvchilari uchun manfaatli bo'lgan musobaqalarni tashkil etishda davom etadi. Biz bu gal markazimizdagi uch soha vakillari, ya'ni UX/UI dizayner, frontend va backend dasturchilarni \"bir dasturxon atrofida\" to'plashga qaror qildik.\n",
-    "time_and_direction": {
-      "date": "2022-05-05",
-      "time": "20:05",
-      "course": "Information Technologies",
-      "specialist": "Java developer",
-      "type": "Online",
-      "link": "https://www.youtube.com/liver24"
+    {
+        "post_id": 3,
+        "post_description": "Alisher Isaevdan biznes va IT bo’yicha master klass",
+        "post_image": "168554441643041d55dcc-71b3-47d0-80ce-69780e2ce6e7.png",
+        "post_text": "Najot Ta'lim jamoasi o'z o'quvchilari uchun manfaatli bo'lgan musobaqalarni tashkil etishda davom etadi. Biz bu gal markazimizdagi uch soha vakillari, ya'ni UX/UI dizayner, frontend va backend dasturchilarni \"bir dasturxon atrofida\" to'plashga qaror qildik.",
+        "time_and_direction": {
+            "date": "2022-05-05",
+            "time": "20:05",
+            "course": "Information Technologies",
+            "specialist": "Java developer",
+            "type": "Online",
+            "link": "https://www.youtube.com/liver24"
+        },
+        "advertiser": {
+            "user_full_name": "Dilshod",
+            "user_proffesion": "WEB designer",
+            "user_phone": "+998997777777",
+            "user_additional_number": "+998997777777"
+        },
+        "isActive": false
     },
-    "advertiser": {
-      "user_full_name": "Abbos Janizakov",
-      "user_proffesion": "Product designer",
-      "user_phone": "998997777777",
-      "user_additional_number": "998917777777"
+    {
+        "post_id": 4,
+        "post_description": "Alisher Isayev",
+        "post_image": "168554801135822d959d6-c28e-4cca-929d-2224ff101da8.png",
+        "time_and_direction": {},
+        "advertiser": {},
+        "isActive": false
     },
-    "isActive": true
-  }
+    {
+        "post_id": 5,
+        "post_description": "Alisher Isaevdan biznes va IT bo’yicha master klass",
+        "post_image": "168554810541341d55dcc-71b3-47d0-80ce-69780e2ce6e7.png",
+        "post_text": "Najot Ta'lim jamoasi o'z o'quvchilari uchun manfaatli bo'lgan musobaqalarni tashkil etishda davom etadi. Biz bu gal markazimizdagi uch soha vakillari, ya'ni UX/UI dizayner, frontend va backend dasturchilarni \"bir dasturxon atrofida\" to'plashga qaror qildik.",
+        "time_and_direction": {
+            "date": "2023-05-05",
+            "time": "20:05",
+            "course": "Information Technologies",
+            "specialist": "Java developer",
+            "type": "Online",
+            "link": "https://www.youtube.com/liver24"
+        },
+        "advertiser": {
+            "user_full_name": "Dilshod",
+            "user_proffesion": "WEB designer",
+            "user_phone": "+998997777777",
+            "user_additional_number": "+998997777777"
+        },
+        "isActive": false
+    }
 ]
