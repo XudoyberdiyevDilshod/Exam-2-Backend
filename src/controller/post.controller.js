@@ -38,10 +38,13 @@ const POST = (req, res, next) => {
 
     console.log(post_image);
 
-    const filePath = Date.now() + post_image.name.replace(/\s/g, "");
+    const imageName = Date.now() + post_image.name.replace(/\s/g, "");
 
     const newPost = {
       post_id: posts.at(-1).post_id + 1 || 1,
+      post_description,
+      post_image: imageName,
+      post_text,
       time_and_direction: {
         date,
         time,
@@ -56,9 +59,6 @@ const POST = (req, res, next) => {
         user_phone,
         user_additional_number,
       },
-      post_description,
-      post_image: filePath,
-      post_text,
       isActive: false,
     };
 

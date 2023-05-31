@@ -1,6 +1,5 @@
-import { read, write } from "../utils/model.js";
+import { read } from "../utils/model.js";
 import jwt from "../utils/jwt.js";
-
 
 const LOGIN = (req, res, next) => {
   try {
@@ -25,4 +24,18 @@ const LOGIN = (req, res, next) => {
   }
 };
 
-export default { LOGIN };
+const GET = (req, res, next) => {
+  try {
+    const admin = read("admin").filter((user) => delete user.password);
+
+    res.status(200).json({
+      status: 200,
+      message: "success",
+      data: admin,
+    });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+export default { LOGIN, GET };
