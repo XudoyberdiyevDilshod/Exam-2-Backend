@@ -1,19 +1,25 @@
 import { read, write } from "../utils/model.js";
 
-const GET = (req, res, next) => {
+const LOGIN = (req, res, next) => {
   try {
-    const posts = read("posts");
+    const admin = read("admin");
+    const { username, password } = req.body;
+    const user = admin.find(
+      (admin) => admin.username == username && admin.password == password
+    );
 
+    if (!user) {
+      return next(new BadRequestError(400, "wrong username or password"));
+    }
+    delete user.password;
     res.status(200).json({
       status: 200,
       message: "success",
-      data: posts,
+      data: user,
     });
   } catch (error) {
-    return next(error);
+    return next(new InternalServerError(500, "InternalServerError"));
   }
 };
 
-export default {
-  GET,
-};
+export default { LOGIN };
