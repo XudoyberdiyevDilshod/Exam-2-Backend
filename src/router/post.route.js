@@ -7,4 +7,5 @@ router.get("/posts", postController.GET);
 
 router.post("/posts", postController.POST);
 
+router.delete("/posts", postController.DELETE);
 export default router;
