@@ -1,0 +1,22 @@
+[
+  {
+    "post_id": 1,
+    "time_and_direction": {
+      "date": "2022-05-05",
+      "time": "20:05",
+      "course": "Information Technologies",
+      "specialist": "Java developer",
+      "type": "Online",
+      "link": "https://www.youtube.com/liver24"
+    },
+    "advertiser": {
+      "user_full_name": "Abbos Janizakov",
+      "user_proffesion": "Product designer",
+      "user_phone": "998997777777",
+      "user_additional_number": "998917777777"
+    },
+    "post_description": "Alisher Isaevdan biznes va IT bo’yicha master klass",
+    "post_image": "1685525019901a1bd2293-d6ed-4a94-ba93-b882a5f3dfc6.png",
+    "post_text": "Najot Ta'lim jamoasi o'z o'quvchilari uchun manfaatli bo'lgan musobaqalarni tashkil etishda davom etadi. Biz bu gal markazimizdagi uch soha vakillari, ya'ni UX/UI dizayner, frontend va backend dasturchilarni \"bir dasturxon atrofida\" to'plashga qaror qildik.\n"
+  }
+]
