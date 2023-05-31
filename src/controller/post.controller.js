@@ -4,11 +4,23 @@ import { InternalServerError, NotFoundError } from "../utils/errors.js";
 import { unlinkSync } from "fs";
 
 // create PostController GET
-
 const GET = (req, res, next) => {
   try {
     const posts = read("posts");
-    res.status(200).json({ status: 200, message: "success", data: posts });
+    const post = posts.filter((post) => post.isActive == "true");
+    res.status(200).json({ status: 200, message: "success", data: post });
+  } catch (error) {
+    return next(new InternalServerError(500, "InternalServerError"));
+  }
+};
+
+const GET_BY_ID = (req, res, next) => {
+  try {
+    const posts = read("posts");
+    const { post_id } = req.params;
+
+    const post = posts.filter((post) => post.post_id == post_id);
+    res.status(200).json({ status: 200, message: "success", data: post });
   } catch (error) {
     return next(new InternalServerError(500, "InternalServerError"));
   }
@@ -131,6 +143,7 @@ const PUT = (req, res, next) => {
 
 export default {
   GET,
+  GET_BY_ID,
   POST,
   DELETE,
   PUT,
