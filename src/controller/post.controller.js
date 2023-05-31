@@ -78,14 +78,17 @@ const POST = (req, res, next) => {
 
 const DELETE = (req, res, next) => {
   try {
-    const posts = read(posts);
+    const posts = read("posts");
     const { post_id } = req.params;
+    console.log(post_id);
     const postIndex = posts.findIndex((post) => post.post_id == post_id);
     if (postIndex == -1) {
       return next(new NotFoundError(404, "post not found"));
     }
     const [deletedPost] = posts.splice(postIndex, 1);
-    unlinkSync(resolve("uploads", deletedPost.name));
+
+    console.log(deletedPost);
+    unlinkSync(resolve("uploads", deletedPost.post_image));
 
     write("posts", posts);
     res.status(200).json({
