@@ -1,10 +1,10 @@
 import { read, write } from "../utils/model.js";
 import { resolve } from "path";
-import moment from "moment/moment.js";
 import { InternalServerError, NotFoundError } from "../utils/errors.js";
 import { unlinkSync } from "fs";
 
 // create PostController GET
+
 const GET = (req, res, next) => {
   try {
     const posts = read("posts");
@@ -37,6 +37,8 @@ const POST = (req, res, next) => {
 
     console.log(post_image);
 
+    const filePath = Date.now() + post_image.name.replace(/\s/g, "");
+
     const newPost = {
       post_id: posts.at(-1).post_id + 1 || 1,
       time_and_direction: {
@@ -54,7 +56,7 @@ const POST = (req, res, next) => {
         user_additional_number,
       },
       post_description,
-      post_image: Date.now() + post_image.name.replace(/\s/g, ""),
+      post_image: filePath,
       post_text,
     };
 
@@ -72,7 +74,32 @@ const POST = (req, res, next) => {
   }
 };
 
+// create PostController DELETE
+
+const DELETE = (req, res, next) => {
+  try {
+    const posts = read(posts);
+    const { post_id } = req.params;
+    const postIndex = posts.findIndex((post) => post.post_id == post_id);
+    if (postIndex == -1) {
+      return next(new NotFoundError(404, "post not found"));
+    }
+    const [deletedPost] = posts.splice(postIndex, 1);
+    unlinkSync(resolve("uploads", deletedPost.name));
+
+    write("posts", posts);
+    res.status(200).json({
+      status: 200,
+      message: "success",
+      data: deletedPost,
+    });
+  } catch (error) {
+    return next(new InternalServerError(500, "InternalServerError"));
+  }
+};
+
 export default {
   GET,
   POST,
+  DELETE,
 };
