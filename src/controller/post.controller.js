@@ -59,7 +59,7 @@ const POST = (req, res, next) => {
         user_phone,
         user_additional_number,
       },
-      isActive: false,
+      isActive,
     };
 
     post_image.mv(resolve("uploads", post_image.name));
@@ -103,8 +103,35 @@ const DELETE = (req, res, next) => {
   }
 };
 
+const PUT = (req, res, next) => {
+  try {
+    const posts = read("posts");
+    const { post_id } = req.params;
+
+    const post = posts.find((post) => post.post_id == post_id);
+
+    if (!post) {
+      return next(new NotFoundError(404, "post not found"));
+    }
+
+    console.log(post.isActive);
+
+    post.isActive = req.body.isActive || post.isActive;
+
+    write("posts", posts);
+    res.status(200).json({
+      status: 200,
+      message: "success",
+      data: post,
+    });
+  } catch (error) {
+    return next(new InternalServerError(500, "InternalServerError"));
+  }
+};
+
 export default {
   GET,
   POST,
   DELETE,
+  PUT,
 };

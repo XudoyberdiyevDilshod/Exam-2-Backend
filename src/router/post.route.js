@@ -7,8 +7,10 @@ const router = Router();
 
 router.get("/posts", checkToken, postController.GET);
 
-router.post("/posts", validate, postController.POST);
+router.post("/posts", checkToken, validate, postController.POST);
 
 router.delete("/posts/:post_id", postController.DELETE);
+
+router.put("/posts/:post_id", validate, postController.PUT);
 
 export default router;
