@@ -1,4 +1,6 @@
 import { read, write } from "../utils/model.js";
+import jwt from "../utils/jwt.js";
+
 
 const LOGIN = (req, res, next) => {
   try {
@@ -15,6 +17,7 @@ const LOGIN = (req, res, next) => {
     res.status(200).json({
       status: 200,
       message: "success",
+      access_token: jwt.sign({ userId: user.adminId }),
       data: user,
     });
   } catch (error) {
