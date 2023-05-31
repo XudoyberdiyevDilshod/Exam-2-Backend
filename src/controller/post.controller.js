@@ -14,6 +14,8 @@ const GET = (req, res, next) => {
   }
 };
 
+// create PostController GET_BY_ID
+
 const GET_BY_ID = (req, res, next) => {
   try {
     const posts = read("posts");
@@ -21,6 +23,32 @@ const GET_BY_ID = (req, res, next) => {
 
     const post = posts.filter((post) => post.post_id == post_id);
     res.status(200).json({ status: 200, message: "success", data: post });
+  } catch (error) {
+    return next(new InternalServerError(500, "InternalServerError"));
+  }
+};
+
+const FILTER_BY_SEARCH = (req, res, next) => {
+  try {
+    const posts = read("posts");
+
+    const { date, course, type, user_full_name } = req.query;
+
+    const filterpost = posts.filter((post) => {
+      const byDate = date ? post.time_and_direction.date.includes(date) : true;
+      const byCourse = course ? post.time_and_direction.course.includes(course) : true;
+      const byType = type ? post.time_and_direction.type.includes(type) : true;
+      const byFullName = user_full_name ? post.advertiser.user_full_name.includes(user_full_name) : true;
+
+      return byDate && byCourse && byType && byFullName;
+    });
+
+    const post = filterpost.filter((post) => post.isActive == "true");
+    res.status(200).json({
+      status: 200,
+      message: "success",
+      data: post,
+    });
   } catch (error) {
     return next(new InternalServerError(500, "InternalServerError"));
   }
@@ -115,6 +143,8 @@ const DELETE = (req, res, next) => {
   }
 };
 
+// create PostController PUT
+
 const PUT = (req, res, next) => {
   try {
     const posts = read("posts");
@@ -147,4 +177,5 @@ export default {
   POST,
   DELETE,
   PUT,
+  FILTER_BY_SEARCH,
 };

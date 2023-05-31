@@ -9,6 +9,8 @@ router.get("/posts", checkToken, postController.GET);
 
 router.get("/posts/:post_id", postController.GET_BY_ID);
 
+router.get("/filterPosts", postController.FILTER_BY_SEARCH);
+
 router.post("/posts", checkToken, validate, postController.POST);
 
 router.delete("/posts/:post_id", postController.DELETE);
