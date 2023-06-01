@@ -7,7 +7,12 @@ import { unlinkSync } from "fs";
 const GET = (req, res, next) => {
   try {
     const posts = read("posts");
-    const post = posts.filter((post) => post.isActive == "true");
+    let { page } = req.query;
+    page = page || process.DEFAULT.pagination.page;
+    const limit = process.DEFAULT.pagination.limit;
+    const post = posts
+      .filter((post) => post.isActive == "true")
+      .slice((page - 1) * limit, page * limit);
     res.status(200).json({ status: 200, message: "success", data: post });
   } catch (error) {
     return next(new InternalServerError(500, "InternalServerError"));
@@ -32,13 +37,19 @@ const FILTER_BY_SEARCH = (req, res, next) => {
   try {
     const posts = read("posts");
 
-    const { date, course, type, user_full_name } = req.query;
+    const { date, course, type_course, user_full_name } = req.query;
 
     const filterpost = posts.filter((post) => {
       const byDate = date ? post.time_and_direction.date.includes(date) : true;
-      const byCourse = course ? post.time_and_direction.course.includes(course) : true;
-      const byType = type ? post.time_and_direction.type.includes(type) : true;
-      const byFullName = user_full_name ? post.advertiser.user_full_name.includes(user_full_name) : true;
+      const byCourse = type_course
+        ? post.time_and_direction.course.includes(course)
+        : true;
+      const byType = type_course
+        ? post.time_and_direction.type_course.includes(type_course)
+        : true;
+      const byFullName = user_full_name
+        ? post.advertiser.user_full_name.includes(user_full_name)
+        : true;
 
       return byDate && byCourse && byType && byFullName;
     });
@@ -62,7 +73,7 @@ const POST = (req, res, next) => {
     const {
       date,
       time,
-      course,
+      type_course,
       specialist,
       type,
       link,
@@ -72,7 +83,6 @@ const POST = (req, res, next) => {
       user_additional_number,
       post_description,
       post_text,
-      isActive,
     } = req.body;
     const { post_image } = req.files;
 
@@ -90,7 +100,7 @@ const POST = (req, res, next) => {
         time,
         course,
         specialist,
-        type,
+        type_course,
         link,
       },
       advertiser: {
@@ -99,7 +109,7 @@ const POST = (req, res, next) => {
         user_phone,
         user_additional_number,
       },
-      isActive,
+      isActive: "false",
     };
 
     post_image.mv(resolve("uploads", post_image.name));

@@ -1,0 +1,151 @@
+/posts:
+  get:
+    tags:
+      - posts
+    summary: Get Posts isActive
+    description: "Get Posts isActive"
+    responses:
+      "200":
+        description: all posts
+        content:
+          aplication/json:
+            schema:
+              $ref: "#/components/schemas/PostResponse"
+    security:
+      - Bearer:
+          type: oath2
+
+  post:
+    tags:
+      - posts
+    summary: Create Posts
+    description: "Create Post by User"
+    requestBody:
+      content:
+        multipart/form-data:
+          schema:
+            $ref: "#/components/schemas/Post"
+      required: true
+    responses:
+      "201":
+        description: Create post
+        content:
+          aplication/json:
+            schema:
+              $ref: "#/components/schemas/PostResponse"
+      "400":
+        description: error message
+        content:
+          aplication/json:
+            schema:
+              $ref: "#/components/schemas/ErrorResponse"
+
+/posts/{post_id}:
+  get:
+    tags:
+      - posts
+    summary: Find post by ID
+    description: "shu id da joylashgan postni malumotlarini o'qish uchun"
+    operationId: getPosttById
+    parameters:
+      - name: post_id
+        in: path
+        description: ID of post to return
+        schema:
+          type: integer
+          format: int64
+    responses:
+      "200":
+        description: successful operation
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostResponse"
+
+  delete:
+    tags:
+      - posts
+    summary: Delete post by ID
+    description: "Admin kelgan postni bekor qilgan taqdirda shu post o'chib ketadi"
+    parameters:
+      - name: post_id
+        in: path
+        required: true
+    responses:
+      "200":
+      description: post deleted
+      content:
+        aplication/json:
+          schema:
+            $ref: "#/components/schemas/PostResponse"
+    security:
+      - Bearer:
+          type: oath2
+
+  put:
+    tags:
+      - posts
+    summary: Put post by ID 
+    description: "Admin tasdiqlab isActive ni true qilsagina foydalanuvchiga ko'rinadi"
+    parameters:
+      - name: post_id
+        in: path
+        required: true
+    requestBody:
+      content:
+        multipart/form-data:
+          schema:
+            $ref: "#/components/schemas/PostPut"
+      required: true
+    responses:
+      "200":
+        description: posts put
+        content:
+          aplication/json:
+            schema:
+              $ref: "#/components/schemas/PostResponse"
+      "400":
+        description: error message
+        content:
+          aplication/json:
+            schema:
+              $ref: "#/components/schemas/ErrorResponse"
+    security:
+      - Bearer:
+          type: oath2
+
+/filterPosts:
+  get:
+    tags:
+      - user
+    summary: filter Posts by date, course, type_course, user_full_name
+    description: "date, course, type_course, user_full_name bo'yicha filterlash"
+    operationId: filterpost
+    parameters:
+      - name: date
+        in: query
+        description: "filter Posts by date"
+        schema:
+          type: string
+      - name: course
+        in: query
+        description: "filter Posts by course"
+        schema:
+          type: string
+      - name: type_course
+        in: query
+        description: "filter Posts by type_course"
+        schema:
+          type: string
+      - name: user_full_name
+        in: query
+        description: "filter Posts by user_full_name"
+        schema:
+          type: string
+    responses:
+      "200":
+        description: successful operation
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostResponse"

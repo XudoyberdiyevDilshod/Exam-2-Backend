@@ -1,0 +1,39 @@
+/login:
+  post:
+    tags:
+      - admin
+    description: "took Token"
+    requestBody:
+      content:
+        multipart/form-data:
+          schema:
+            $ref: "#/components/schemas/Login"
+      required: true
+    responses:
+      "200":
+        description: login admin
+        content:
+          aplication/json:
+            schema:
+              $ref: "#/components/schemas/Response"
+      "400":
+        description: error message
+        content:
+          aplication/json:
+            schema:
+              $ref: "#/components/schemas/ErrorResponse"
+
+  get:
+    tags:
+      - admin
+    description: "visibility admin"
+    responses:
+      "200":
+        description: admin
+        content:
+          aplication/json:
+            schema:
+              $ref: "#/components/schemas/Response"
+    security:
+      - Bearer:
+          type: oath2

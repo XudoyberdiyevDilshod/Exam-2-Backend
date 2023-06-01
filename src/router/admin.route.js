@@ -5,7 +5,7 @@ import validate from "../middleware/validate.js";
 
 const router = Router();
 
-router.post("/login", checkToken, validate, adminController.LOGIN);
+router.post("/login", validate, adminController.LOGIN);
 router.get("/login", checkToken, adminController.GET);
 
 export default router;

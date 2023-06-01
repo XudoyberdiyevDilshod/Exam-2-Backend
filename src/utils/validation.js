@@ -17,7 +17,7 @@ export const PostCreateSchema = Joi.object({
     .required(),
   course: Joi.string().min(4).required(),
   specialist: Joi.string().min(4).required(),
-  type: Joi.string().min(4).required(),
+  type_course: Joi.string().min(4).required(),
   link: Joi.string()
     .regex(/^https?:\/\/\w+(\.\w+)*(:\d+)?(\/.*)?$/)
     .required(),

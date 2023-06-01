@@ -1,0 +1,95 @@
+components:
+  schemas:
+    PostResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              post_id:
+                type: integer
+              post_description:
+                type: string
+              post_image:
+                type: string
+              post_text:
+                type: string
+              time_and_direction:
+                type: object
+                properties:
+                  date:
+                    type: string
+                  time:
+                    type: string
+                  course:
+                    type: string
+                  specialist:
+                    type: string
+                  type_course:
+                    type: string
+                  link:
+                    type: string
+              advertiser:
+                type: object
+                properties:
+                  user_full_name:
+                    type: string
+                  user_proffesion:
+                    type: string
+                  user_phone:
+                    type: string
+                  user_additional_number:
+                    type: string
+              isActive:
+                type: string
+    Post:
+      type: object
+      properties:
+        post_description:
+          type: string
+        post_image:
+          type: string
+          format: binary
+        post_text:
+          type: string
+        date:
+          type: string
+        time:
+          type: string
+        course:
+          type: string
+        specialist:
+          type: string
+        type_course:
+          type: string
+        link:
+          type: string
+        user_full_name:
+          type: string
+        user_proffesion:
+          type: string
+        user_phone:
+          type: string
+        user_additional_number:
+          type: string
+
+    PostPut:
+      type: object
+      properties:
+        isActive:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+        name:
+          type: string
+        message:
+          type: string

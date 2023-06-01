@@ -1,0 +1,36 @@
+components:
+  schemas:
+    Response:
+      type: object
+      properties:
+        status:
+          type: integer
+        message:
+          type: string
+        access_token:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              adminId:
+                type: integer
+              username:
+                type: string
+    Login:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+        name:
+          type: string
+        message:
+          type: string

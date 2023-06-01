@@ -7,8 +7,8 @@ import morgan from "morgan";
 import errorHandler from "./middleware/errorHandler.js";
 import adminRouter from "./router/admin.route.js";
 import postRouter from "./router/post.route.js";
-
-const PORT = process.env.PORT || 7070;
+import swaggerRouter from "./swagger.js";
+import { PORT } from "./config.js";
 
 const app = express();
 
@@ -28,6 +28,7 @@ app.use(
   })
 );
 
+app.use("/api-docs", swaggerRouter);
 app.use(adminRouter);
 app.use(postRouter);
 app.use(errorHandler);
